@@ -19,6 +19,9 @@ public class PatternMatching {
 		int ans = 0;
 		int tl = Text.length();
 		int pl = Pattern.length();
+		
+		if(pl>tl)
+			return 0;
 
 		for (int i = 0; i <= tl - pl; i++) {
 
