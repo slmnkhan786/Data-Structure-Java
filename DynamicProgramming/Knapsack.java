@@ -50,7 +50,7 @@ public class Knapsack {
 		}
 
 		// which weights included
-		int rem_wghts = 8;
+		int rem_prof = W[row-1][col-1];
 		row--;
 		int x[] = new int[row];
 
@@ -60,16 +60,16 @@ public class Knapsack {
 
 			for (int j = col - 1; j >= 0; j--) {
 
-				if (W[i - 1][j] == rem_wghts) {
+				if (rem_prof==0 || W[i - 1][j] == rem_prof) {
 					flag = 0;
 					break;
 				}
 
 			}
 
-			if (flag == 1) {
+			if (rem_prof>0 && flag == 1) {
 				x[i - 1] = 1;
-				rem_wghts -= wghts[i - 1];
+				rem_prof -= prof[i - 1];
 			}
 
 		}
