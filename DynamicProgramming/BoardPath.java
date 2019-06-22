@@ -9,6 +9,7 @@ public class BoardPath {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		int strg[] = new int[n + 1];
+		
 		//System.out.println(cbpRS(0, n, strg));
 		System.out.println(cbpIS(n));
 	}
