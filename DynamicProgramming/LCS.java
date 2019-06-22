@@ -12,6 +12,7 @@ public class LCS {
 		String str2 = sc.next();
            
 		//System.out.println(lcsR(str1, str2));
+		
 		System.out.println(lcsI(str1, str2));
 
 	}
