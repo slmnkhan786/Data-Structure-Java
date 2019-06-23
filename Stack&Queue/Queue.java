@@ -63,11 +63,16 @@ public class Queue {
 	}
 
 	public void display() {
-  for(int i=0;i<size;i++)
-  {
-	  System.out.println(this.data[(i+this.f)%data.length]);
-  }
+		if(this.isEmpty())
+		{
+		System.out.println("Queue is Empty");
+		return
 	}
+       for(int i=0;i<size;i++)
+        {
+	  System.out.println(this.data[(i+this.f)%data.length]);
+        }
+}
 
 	
 
