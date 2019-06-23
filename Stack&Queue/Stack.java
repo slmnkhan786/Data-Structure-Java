@@ -57,6 +57,12 @@ public class Stack {
 	}
 
 	public void display() {
+		
+		if (this.size() == 0) {
+			System.out.println("Stack is Empty");
+			return;
+		}
+		
   for(int i=this.size()-1;i>=0;i--)
   {
 	  System.out.println(this.data[i]);
