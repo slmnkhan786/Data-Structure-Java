@@ -417,6 +417,7 @@ public class LinkedList {
 	   this.head=n1;
 	   this.tail=null;
    }
+	//removing cylce in ll
    public void removeLoop()
    {
 	   Node slow=this.head;
