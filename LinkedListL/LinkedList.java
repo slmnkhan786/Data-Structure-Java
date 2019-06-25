@@ -440,4 +440,120 @@ public class LinkedList {
 	   }
 	   slow.next=null;
    }
+	
+	// Remove duplicates in sorted LL
+
+	public void removeDuplicatesSortedLL() {
+
+		Node prv = this.head;
+		Node cur = this.head.next;
+
+		while (cur != null) {
+
+			if (cur.data == prv.data) {
+
+				if (cur.next == null) {
+					this.tail = prv;
+					this.tail.next = null;
+					cur = null;
+				}
+
+				else {
+					cur = cur.next;
+					prv.next = cur;
+				}
+
+				this.size--;
+			}
+
+			else {
+				prv = cur;
+				cur = cur.next;
+			}
+		}
+
+	}
+
+	// odd on left and even on right with maintaining order
+
+	public void oddEven() throws Exception {
+
+		Node cur = this.head;
+		LinkedList ol = new LinkedList();
+		LinkedList el = new LinkedList();
+
+		while (cur != null) {
+			if (cur.data % 2 == 0)
+				el.addLast(cur.data);
+			else
+				ol.addLast(cur.data);
+
+			cur = cur.next;
+		}
+
+		if (ol.size == this.size) {
+			this.head = ol.head;
+			this.tail = ol.tail;
+		}
+
+		else if (el.size == this.size) {
+			this.tail = el.tail;
+			this.head = el.head;
+		}
+
+		else {
+			ol.tail.next = el.head;
+			this.head = ol.head;
+			this.tail = el.tail;
+		}
+
+	}
+
+	// swap elements
+
+	public void swapElements(int item1, int item2) throws Exception {
+
+		Node temp = this.head;
+		Node item1_pos = null;
+		Node item2_pos = null;
+
+		while (temp != null) {
+			if (item2 == temp.data) {
+				item2_pos = temp;
+				break;
+			}
+			temp = temp.next;
+		}
+
+		temp = this.head;
+
+		while (temp != null) {
+			if (item1 == temp.data) {
+				item1_pos = temp;
+				break;
+			}
+			temp = temp.next;
+		}
+
+		if (item1_pos == null || item2_pos == null)
+			throw new Exception("Element not present");
+
+		int tmp = item1_pos.data;
+		item1_pos.data = item2_pos.data;
+		item2_pos.data = tmp;
+
+	}
+
+	// Append k elements from last to front of LL
+
+	public void kAppend(int k) throws Exception {
+
+		k = k % this.size;
+
+		for (int i = 1; i <= k; i++) {
+			this.addFirst(this.removeLast());
+		}
+
+	}
+	
 }
