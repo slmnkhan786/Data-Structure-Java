@@ -556,4 +556,40 @@ public class LinkedList {
 
 	}
 	
+	// check whether given LL is palindrome
+
+	public boolean isPalindrome() throws Exception {
+
+		LinkedList nl = new LinkedList();
+
+		int limit = this.size / 2;
+
+		Node nn = null;
+
+		if (this.size % 2 == 0)
+			limit -= 1;
+
+		nn = this.getNodeAt(limit);
+
+		nl.head = nn.next;
+		nl.tail = this.tail;
+		nn.next = null;
+		nl.reverseLLP();
+		Node temph = this.head;
+		Node tempn = nl.head;
+		
+		
+		while (tempn != null) {
+			if (tempn.data == temph.data) {
+				temph = temph.next;
+				tempn = tempn.next;
+			} else
+				return false;
+
+		}
+        
+		
+		return true;
+
+	}
 }
