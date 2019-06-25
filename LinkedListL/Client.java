@@ -7,13 +7,13 @@ public class Client {
 		// TODO Auto-generated method stub
 		LinkedList list = new LinkedList();
 
-//		list.addLast(10);
-//		list.addLast(20);
-//		list.addLast(50);
-//		list.addLast(60);
-//		list.addLast(70);
-//		list.addLast(30);
-//		list.addLast(40);
+		list.addLast(10);
+		list.addLast(20);
+		list.addLast(50);
+		list.addLast(60);
+		list.addLast(70);
+		list.addLast(30);
+		list.addLast(40);
 		
 //		System.out.println(list.removeLast());
        //list.display();
@@ -29,7 +29,7 @@ public class Client {
 //	list.kreverse(3);
 //	list.display();
 //list.mergeSort();
-		list.createdummyLL();
+		//list.createdummyLL();
 		//list.removeLoop();
 list.display();
 	}
