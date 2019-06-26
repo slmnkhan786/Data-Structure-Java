@@ -222,4 +222,34 @@ public class BinaryTree {
 			}
 		}
 	}
+	
+	// Tree right view
+
+	public void rightView() {
+		this.rightView(this.root);
+	}
+
+	private void rightView(Node parent) {
+
+		LinkedList<Node> helper = new LinkedList<>();
+		LinkedList<Node> queue = new LinkedList<>();
+		queue.addLast(parent);
+
+		while (!queue.isEmpty()) {
+			Node rn = queue.removeFirst();
+
+			if (rn.left != null)
+				helper.addLast(rn.left);
+
+			if (rn.right != null)
+				helper.addLast(rn.right);
+
+			if (queue.isEmpty()) {
+				System.out.println(rn.data);
+				queue = helper;
+				helper = new LinkedList<>();
+			}
+
+		}
+	}
 }
