@@ -252,4 +252,77 @@ public class BinaryTree {
 
 		}
 	}
+	
+	
+	//Tree top view
+	
+	public void topView() {
+		HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
+		
+		this.topView(this.root, 0, map);
+
+		TreeMap<Integer, ArrayList<Integer>> map1 = new TreeMap<>(map);
+
+		for (Integer key : map1.keySet())
+			System.out.print(map1.get(key).get(0) + " ");
+		System.out.println();
+
+	}
+
+	private void topView(Node parent, int idx, HashMap<Integer, ArrayList<Integer>> map) {
+
+		if (parent == null)
+			return;
+
+		if (map.containsKey(idx)) {
+			ArrayList<Integer> list = map.get(idx);
+			list.add(parent.data);
+			map.put(idx, list);
+		} else {
+			ArrayList<Integer> list = new ArrayList<>();
+			;
+			list.add(parent.data);
+			map.put(idx, list);
+		}
+
+		topView(parent.left, idx - 1, map);
+		topView(parent.right, idx + 1, map);
+
+	}
+	
+	//Tree bottom view
+	
+		public void bottomView() {
+			HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
+			
+			this.bottomView(this.root, 0, map);
+
+			TreeMap<Integer, ArrayList<Integer>> map1 = new TreeMap<>(map);
+
+			for (Integer key : map1.keySet())
+				System.out.print(map1.get(key).get(map1.get(key).size()-1) + " ");
+			System.out.println();
+
+		}
+
+		private void bottomView(Node parent, int idx, HashMap<Integer, ArrayList<Integer>> map) {
+
+			if (parent == null)
+				return;
+
+			if (map.containsKey(idx)) {
+				ArrayList<Integer> list = map.get(idx);
+				list.add(parent.data);
+				map.put(idx, list);
+			} else {
+				ArrayList<Integer> list = new ArrayList<>();
+				;
+				list.add(parent.data);
+				map.put(idx, list);
+			}
+
+			topView(parent.left, idx - 1, map);
+			topView(parent.right, idx + 1, map);
+
+		}
 }
