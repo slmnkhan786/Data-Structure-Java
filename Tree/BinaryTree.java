@@ -325,4 +325,120 @@ public class BinaryTree {
 			topView(parent.right, idx + 1, map);
 
 		}
+	
+	// Root to leaf path
+
+	public boolean rootToLeafPath(int sum) {
+		return rootToLeafPath(this.root, sum);
+	}
+
+	private boolean rootToLeafPath(Node parent, int sum) {
+
+		if (parent == null)
+			return false;
+
+		if (parent.left == null && parent.right == null && parent.data == sum)
+			return true;
+
+		boolean lr = rootToLeafPath(parent.left, sum - parent.data);
+		boolean rr = rootToLeafPath(parent.right, sum - parent.data);
+
+		if (lr || rr)
+			return true;
+
+		return false;
+
+	}
+
+	// Lowest Common Ancester
+
+	public void lowestCommonAncester(int num1, int num2) {
+		lowestCommonAncester(this.root, num1, num2);
+	}
+
+	private boolean lowestCommonAncester(Node parent, int num1, int num2) {
+
+		if (parent == null)
+			return false;
+
+		if (parent.data == num1 || parent.data == num2)
+			return true;
+
+		boolean lr = lowestCommonAncester(parent.left, num1, num2);
+		boolean rr = lowestCommonAncester(parent.right, num1, num2);
+
+		if (lr && rr)
+			System.out.println(parent.data);
+
+		if (lr || rr)
+			return true;
+
+		return false;
+
+	}
+
+	// Sum of nodes
+
+	public int sumOfNodes() {
+		return this.sumOfNodes(this.root);
+	}
+
+	private int sumOfNodes(Node node) {
+
+		if (node == null)
+			return 0;
+
+		int sum = node.data;
+
+		int lr = sumOfNodes(node.left);
+		int rr = sumOfNodes(node.right);
+
+		sum = sum + lr + rr;
+
+		return sum;
+
+	}
+	
+	//Sum tree
+	
+	private class HeapMover
+	{
+		int sum=0;
+		boolean res=true;
+	}
+	
+	public boolean sumTree() {
+		 HeapMover mover=this.sumTree(this.root);
+		 return mover.res;
+	}
+
+	private HeapMover sumTree(Node node) {
+
+		if (node == null)
+			return new HeapMover();
+
+		HeapMover mover=new HeapMover();
+		mover.sum=node.data;
+		
+
+		HeapMover lr = sumTree(node.left);
+		HeapMover rr = sumTree(node.right);
+
+		if(lr.res&&rr.res)
+		{
+		if(lr.sum==0&&rr.sum==0)
+		{
+			mover.res=true;
+		}
+		else if(mover.sum!=lr.sum+rr.sum)
+		{
+			mover.res=false;
+		}
+		}
+		else
+			mover.res=false;
+
+		return mover;
+
+	}
 }
