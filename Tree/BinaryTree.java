@@ -441,4 +441,73 @@ public class BinaryTree {
 		return mover;
 
 	}
+	
+	// Diameter of a tree
+
+	private class Pair {
+		int min = Integer.MAX_VALUE;
+		int max = Integer.MIN_VALUE;
+	}
+
+	public int diameter() {
+
+		Pair pair = new Pair();
+		this.diameter(this.root, 0, pair);
+
+		return pair.max - pair.min;
+
+	}
+
+	private void diameter(Node node, int idx, Pair pair) {
+
+		if (node == null)
+			return;
+
+		if (pair.min > idx)
+			pair.min = idx;
+
+		if (pair.max < idx)
+			pair.max = idx;
+
+		diameter(node.left, idx - 1, pair);
+		diameter(node.right, idx + 1, pair);
+
+	}
+
+	//Tree is balance or not
+	
+	private class HeapMover1 {
+		int height = -1;
+		boolean isBalance = true;
+	}
+
+	public boolean isBalanced() {
+		HeapMover1 mover = this.isBalanced(this.root);
+		return mover.isBalance;
+	}
+
+	private HeapMover1 isBalanced(Node node) {
+
+		if (node == null)
+			return new HeapMover1();
+
+		HeapMover1 mover = new HeapMover1();
+
+		HeapMover1 lr = isBalanced(node.left);
+		HeapMover1 rr = isBalanced(node.right);
+
+		if (lr.isBalance && rr.isBalance) {
+			if (Math.abs(lr.height - rr.height) <= 1) {
+				mover.height = Math.max(lr.height, rr.height) + 1;
+				mover.isBalance = true;
+			} else
+				mover.isBalance = false;
+		} else {
+			mover.isBalance = false;
+		}
+
+		return mover;
+
+	}
+	
 }
