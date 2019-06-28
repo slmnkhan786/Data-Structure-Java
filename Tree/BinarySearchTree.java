@@ -123,5 +123,54 @@ public class BinarySearchTree {
 		}
 
 	}
+	
+	// remove item from bst
+
+	public void remove(int item) {
+		this.remove(this.root, null, false, item);
+	}
+
+	private void remove(Node parent, Node node, boolean ilc, int item) {
+
+		if (parent.data < item) {
+			remove(parent.right, parent, false, item);
+		}
+
+		else if (item < parent.data) {
+			remove(parent.left, parent, true, item);
+		}
+
+		else {
+
+			if (parent.left == null && parent.right == null) {
+				if (ilc)
+					node.left = null;
+				else
+					node.right = null;
+			}
+
+			else if (parent.left == null && parent.right != null) {
+				if (ilc)
+					node.left = parent.right;
+				else
+					node.right = parent.right;
+			}
+
+			else if (parent.left != null && parent.right == null) {
+				if (ilc)
+					node.left = parent.left;
+				else
+					node.right = parent.left;
+			}
+
+			else {
+				int max = this.max(parent.left);
+				parent.data = max;
+				this.remove(parent.left, parent, true, max);
+			}
+		}
+
+	}
+
 
 }
