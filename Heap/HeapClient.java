@@ -4,17 +4,22 @@ public class HeapClient {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        HeapGeneric<Integer> hp=new HeapGeneric<>();
-        for(int i=5;i>=1;i--)
-        {
-        	hp.add(10*i);
-        	hp.display();
-        }
-        for(int i=0;i<5;i++)
-        {
-        	System.out.println(hp.remove());
-        	hp.display();
-        }
+       MinHeap heap = new MinHeap();
+
+		heap.add(90);
+		heap.add(80);
+		heap.add(50);
+		heap.add(60);
+		heap.add(70);
+		heap.add(20);
+		heap.add(10);
+		System.out.println(heap.size());
+		System.out.println(heap.isEmpty());
+		heap.display();
+		System.out.println(heap.remove());
+		System.out.println(heap.remove());
+		System.out.println(heap.get());
+		heap.display();
 	}
 
 }
