@@ -1,6 +1,6 @@
 package HeapDemo;
 
-public class HeapClient {
+public class MinHeapClient {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
