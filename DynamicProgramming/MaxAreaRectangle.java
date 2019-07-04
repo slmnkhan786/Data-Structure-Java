@@ -81,7 +81,7 @@ public class MaxAreaRectangle {
 			}
 		}
 
-		while (!stack.isEmpty()) {
+		while ( !stack.isEmpty()) {
 
 			top = stack.removeFirst();
 
