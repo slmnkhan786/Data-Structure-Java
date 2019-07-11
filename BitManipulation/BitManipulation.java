@@ -28,6 +28,16 @@ public class BitManipulation {
 		System.out.println(setBit(n,i));
 		System.out.println(resetBit(n,i));
 		
+		System.out.println(posRSB(n));
+
+//		System.out.println(addOne(n));
+
+		System.out.println(magicNo(n));
+		
+		System.out.println(pascalSum(n));
+		
+		System.out.println(powerOfTwo(n));
+		
 	}
 
 	// checking no. is odd or even
@@ -85,6 +95,81 @@ public class BitManipulation {
 		j = ~j;
 
 		return n & j;
+
+	}
+	
+	// position of first right set bit
+
+	public static int posRSB(int n) {
+
+		int mask = 1;
+		int pos = 1;
+
+		while ((n & mask) == 0) {
+			pos++;
+			mask <<= 1;
+		}
+
+		return pos;
+
+	}
+
+	// adding one to given no.
+
+	public static int addOne(int n) {
+
+		int pos = posRSB((~n));
+		int mask = 1;
+
+		while (pos > 0) {
+			n ^= mask;
+			mask <<= 1;
+			pos--;
+		}
+
+		return n;
+
+	}
+
+	// ith magic no. in the power or sum of powers of 5
+
+	public static int magicNo(int i) {
+
+		int pow = 5;
+		int ans = 0;
+
+		while (i != 0) {
+
+			if ((i & 1) != 0)
+				ans += pow;
+
+			pow *= 5;
+
+			i >>= 1;
+
+		}
+
+		return ans;
+
+	}
+
+	// Pascals triangle sum
+
+	public static int pascalSum(int i) {
+
+		int ans = 1 << i;
+
+		return (ans - 1);
+
+	}
+
+	// check no. can represent in power of two or not
+
+	public static boolean powerOfTwo(int n) {
+
+		int ans = n & (n - 1);
+
+		return (ans == 0 ? true : false);
 
 	}
 
